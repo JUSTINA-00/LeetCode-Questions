@@ -1,0 +1,13 @@
+class Solution {
+    public int numPairsDivisibleBy60(int[] time) {
+        HashMap<Integer,Integer>reminderCount=new HashMap<>();
+        int count =0;
+        for(int t:time){
+            int rem=t%60;
+            int need =(60-rem)%60;
+            count+=reminderCount.getOrDefault(need,0);
+            reminderCount.put(rem, reminderCount.getOrDefault(rem,0)+1);
+        }
+        return count;
+    }
+}
